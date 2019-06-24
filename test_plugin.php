@@ -10,7 +10,7 @@
  * version: 1.0
  */
 
-//将插件在左侧菜单中显示
+// add plugin to left menu
 function register_menu_plugin()
 {
     add_menu_page("test_plugin", "test_plugin", 8, __FILE__, "test_plugin");
@@ -19,12 +19,9 @@ function register_menu_plugin()
 // content page of plugin
 function test_plugin()
 { ?>
-    <div> <?php echo plugins_url('form_submit.php', __FILE__); ?> </div>
     <h1>WordPress Extra Post Info</h1>
     <form enctype="multipart/form-data" method="post"
           action="<?php echo plugins_url('form_submit.php', __FILE__); ?>">
-<!--          --><?php //settings_fields('extra-post-info-settings'); ?>
-<!--          --><?php //do_settings_sections('extra-post-info-settings'); ?>
             <table class="form-table">
                 <tr valign="top">
                     <th scope="row">Extra post info:</th>
@@ -37,7 +34,7 @@ function test_plugin()
     </form>
 <?php }
 
-// 在adminmenu 勾子中添加动作 register_menu_plugin
+// add action register_menu_plugin hook to admin-menu
 if (is_admin()) {
     add_action("admin_menu", "register_menu_plugin");
 }
